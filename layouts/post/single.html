@@ -1,0 +1,52 @@
+{{ partial "header.html" . }}
+
+<section id="content">
+    <h1>
+        {{ if .Params.heading }}
+            {{ .Params.heading }}
+        {{ else }}
+            {{ .Title }}
+        {{ end }}
+    </h1>
+
+    <div id="sub-header">
+        {{ .Date.Format (.Site.Params.dateform) }}
+        · {{ if lt 1 .WordCount }}
+            {{ .WordCount }} words
+        {{ else }}
+            {{ .WordCount }} word
+        {{ end }}
+        <span class="tags">
+        {{ with .Params.tags }}
+            {{ if ge (len .) 1 }}
+                · {{ range . }}
+                    <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">{{ . }}</a>
+                {{ end }}
+            {{ end }}
+        {{ end}}
+        </span>
+    </div>
+
+    <div class="entry-content">
+        {{ .Content }}
+    </div>
+
+    <div id="links">
+        {{ if .PrevInSection }}
+            <a class="basic-alignment left" href="{{.PrevInSection.Permalink}}">&laquo;
+                {{.PrevInSection.Title}}
+            </a>
+        {{ end }}
+        {{ if .NextInSection }}
+            <a class="basic-alignment left" href="{{.NextInSection.Permalink}}">
+                {{.NextInSection.Title}} &raquo;
+            </a>
+        {{ end }}
+    </div>
+</section>
+
+{{ template "_internal/disqus.html" . }}
+
+{{ partial "footer.html" . }}
+
+

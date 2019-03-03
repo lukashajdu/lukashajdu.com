@@ -1,0 +1,29 @@
+title: "Lukas Hajdu"
+baseurl: "https://lukashajdu.com/"
+publishDir: web
+paginate: 20
+disqusShortname: "lukashajdu-com"
+googleAnalytics: "UA-54969806-1"
+
+params:
+  sitename: "blog@lukash:/en"
+  dateform: "Monday, Jan 2, 2006"
+
+theme: "hugo-black-and-light-theme"
+PygmentsUseClasses: false
+PygmentsCodeFences: true
+PygmentsStyle: "friendly"
+
+languageCode: "en"
+language: "en"
+
+taxonomies:
+  tag: "tags"
+  category: "categories"
+
+menu:
+  main:
+    - name: "Blog"
+      url: "/"
+    - name: "About"
+      url: "https://www.linkedin.com/in/lhajdu/"
