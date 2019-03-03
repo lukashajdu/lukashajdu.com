@@ -11,17 +11,16 @@ build:
         version: "0.53"
         theme: "hugo-black-and-light-theme"
         flags: "--buildDrafts=true"
-
-#deploy:
-#  steps:
-#    - script:
-#      name: refresh package cache
-#      code: |
-#        apt-get -qq update
-#    - install-packages:
-#      packages: curl
-#    - simpletechs/ftp-deploy-exclude:
-#      destination: $FTP_DOMAIN
-#      username: $FTP_USERNAME
-#      password: $FTP_PASSWORD
-#      exclude-file: "/archetypes/ /content/ /data/ /layouts/ /static/ /themes/ /.git/ /.gitignore /config.yaml /wercker.yml"
+deploy:
+  steps:
+    - script:
+      name: refresh package cache
+      code: |
+        apt-get -qq update
+    - install-packages:
+      packages: curl
+    - simpletechs/ftp-deploy-exclude@1.6.1:
+      destination: $FTP_DOMAIN
+      username: $FTP_USERNAME
+      password: $FTP_PASSWORD
+      exclude-file: "/archetypes/ /content/ /data/ /layouts/ /static/ /themes/ /.git/ /.gitignore /config.yaml /wercker.yml"
