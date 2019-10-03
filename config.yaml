@@ -23,7 +23,5 @@ taxonomies:
 
 menu:
   main:
-    - name: "Blog"
-      url: "/"
     - name: "About"
       url: "https://www.linkedin.com/in/lhajdu/"

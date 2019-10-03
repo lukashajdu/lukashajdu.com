@@ -1,0 +1,37 @@
+{{ partial "header.html" . }}
+
+<section id="content" class="single_post">
+    <div id="date">
+        <time>{{ .Date.Format (.Site.Params.dateform) }}</time>
+    </div>
+    <h1>
+        {{ if .Params.heading }}
+            {{ .Params.heading }}
+        {{ else }}
+            {{ .Title }}
+        {{ end }}
+    </h1>
+
+    <div class="entry-content">
+        {{ .Content }}
+    </div>
+
+    <div id="links">
+        {{ if .PrevInSection }}
+            <a class="basic-alignment" href="{{.PrevInSection.Permalink}}">&laquo;
+                {{.PrevInSection.Title}}
+            </a>
+        {{ end }}
+        {{ if .NextInSection }}
+            <a class="basic-alignment {{ if not .PrevInSection }}right{{ end }}" href="{{.NextInSection.Permalink}}">
+                {{.NextInSection.Title}} &raquo;
+            </a>
+        {{ end }}
+    </div>
+</section>
+
+{{ template "_internal/disqus.html" . }}
+
+{{ partial "footer.html" . }}
+
+
