@@ -10,7 +10,7 @@
     }
 
     body {
-        font-family: Arial, serif;
+        font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
         font-size: 17px;
         line-height: 160%;
         color: #1d1313;
@@ -128,7 +128,7 @@
     }
 
     .heading, .serif, h1, h2, h3 {
-        font-family: "Old Standard TT", serif;
+        font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
     }
 
     strong {
@@ -198,7 +198,7 @@
     }
 
     #sub-header, time {
-        color: #403c3b;
+        color: #555;
         font-size: 13px;
     }
 
@@ -226,15 +226,11 @@
     }
 
     ul li {
-        margin-left: 5px;
+        margin-left: 25px;
     }
 
-    ul li {
+    ul.posts_listing li {
         list-style-type: none;
-    }
-
-    ul li:before {
-        content: "\00BB \0020";
     }
 
     #nav ul li:before, .posts_listing li:before, .pagination li:before {
@@ -242,31 +238,26 @@
         margin-right: 0;
     }
 
-    #content {
-        text-align: left;
-        width: 100%;
-        font-size: 15px;
-        padding: 20px 0;
-    }
-
     #content h1, #content h2 {
-        margin-bottom: 5px;
-    }
-
-    #content h2 {
-        font-size: 25px;
+        font-size: 30px;
+        margin: .5rem 0;
+        font-weight: 700;
     }
 
     #content .entry-content {
         margin-top: 15px;
     }
 
-    #content time {
-        margin-left: 3px;
+    #content .entry-content h1 {
+        font-size: 25px;
     }
 
-    #content h1 {
-        font-size: 30px;
+    #content .entry-content h2 {
+        font-size: 20px;
+    }
+
+    #content time {
+        margin-left: 3px;
     }
 
     .highlight {
@@ -274,7 +265,7 @@
     }
 
     .posts_listing {
-        margin: 0 0 50px;
+        margin: 25px 0;
     }
 
     .posts_listing li {
@@ -282,7 +273,11 @@
     }
 
     .posts_listing li a:hover, #nav a:hover {
-        text-decoration: underline;
+        text-decoration: none;
+    }
+
+    .single_post {
+        margin: 25px 0;
     }
 
     #nav {
@@ -303,10 +298,21 @@
 
     #links {
         margin: 50px 0 0 0;
+        display: block;
     }
 
     #links :nth-child(2) {
         float: right;
+    }
+
+    #links .right {
+        float: right;
+    }
+
+    #links::after {
+        content: "";
+        clear: both;
+        display: table;
     }
 
     #not-found {
@@ -322,8 +328,9 @@
     }
 
     #copyright {
-        font-size: 15px;
+        font-size: 12px;
         padding: 20px 0;
+        text-align: center;
     }
 
     @media (max-width: 750px) {

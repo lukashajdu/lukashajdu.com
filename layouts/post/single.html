@@ -1,6 +1,9 @@
 {{ partial "header.html" . }}
 
-<section id="content">
+<section id="content" class="single_post">
+    <div id="date">
+        <time>{{ .Date.Format (.Site.Params.dateform) }}</time>
+    </div>
     <h1>
         {{ if .Params.heading }}
             {{ .Params.heading }}
@@ -9,36 +12,18 @@
         {{ end }}
     </h1>
 
-    <div id="sub-header">
-        {{ .Date.Format (.Site.Params.dateform) }}
-        · {{ if lt 1 .WordCount }}
-            {{ .WordCount }} words
-        {{ else }}
-            {{ .WordCount }} word
-        {{ end }}
-        <span class="tags">
-        {{ with .Params.tags }}
-            {{ if ge (len .) 1 }}
-                · {{ range . }}
-                    <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">{{ . }}</a>
-                {{ end }}
-            {{ end }}
-        {{ end}}
-        </span>
-    </div>
-
     <div class="entry-content">
         {{ .Content }}
     </div>
 
     <div id="links">
         {{ if .PrevInSection }}
-            <a class="basic-alignment left" href="{{.PrevInSection.Permalink}}">&laquo;
+            <a class="basic-alignment" href="{{.PrevInSection.Permalink}}">&laquo;
                 {{.PrevInSection.Title}}
             </a>
         {{ end }}
         {{ if .NextInSection }}
-            <a class="basic-alignment left" href="{{.NextInSection.Permalink}}">
+            <a class="basic-alignment {{ if not .PrevInSection }}right{{ end }}" href="{{.NextInSection.Permalink}}">
                 {{.NextInSection.Title}} &raquo;
             </a>
         {{ end }}
