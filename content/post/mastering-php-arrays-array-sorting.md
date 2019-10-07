@@ -17,7 +17,9 @@ when you try to pass array directly as a function argument.
 Sort functions return **true** on success or **false** and warning message
 when parameter type differs from array.
 
-```
+```php
+<?php
+
 $array = [14, 1, 22, 8, 7];
 $return = sort($array);
 var_dump($return); // bool(true)
@@ -31,7 +33,9 @@ var_dump($return); // bool(false)
 If two array members are evaluated as equal then the order is undefined.
 It's unknown which number 1 will be at `$array[0]` or `$array[1]`:
 
-```
+```php
+<?php
+
 $array = [3, 1, 2, 1];
 sort($array);
 ```
@@ -59,7 +63,9 @@ to **SORT_REGULAR**, which is default sort flag for most sorting functions.
 
 Example array with various types of scalar values:
 
-```
+```php
+<?php
+
 $array = [
     true,
     false,
@@ -86,7 +92,9 @@ As you can see sorted array differs for each sort flag. Comparison of sorted key
 is case sensitive by default. For case-insensitive comparison, **SORT_FLAG_CASE** combination
 with **SORT_STRING** or **SORT_NATURAL** can be used.
 
-```
+```php
+<?php
+
 $oranges = ['Orange1', 'orange3', 'orange1','Orange4'];
 
 sort($oranges, SORT_STRING);
@@ -135,7 +143,9 @@ Expected compare function return values:
 **Example:** Interpolation of sort function with **SORT_STRING** sort flag using
 anonymous function/closure.
 
-```
+```php
+<?php
+
 $array = ['Hello', 'Ahoy','Hi', 'hello'];
 
 usort($array, function($a, $b) {
@@ -156,7 +166,9 @@ expectation defined earlier (< 0 if str1 is less than str2; > 0 if str1 is great
 
 **Example:** Sort by occurrence of character 'o':
 
-```
+```php
+<?php
+
 $array = ['Hello World', 'Ahoy','Hi'];
 
 function occurrenceOfO($a, $b)
@@ -191,7 +203,9 @@ This makes easier to write callbacks for comparison functions and return correct
 expected by this function.
 
 Example of spaceship operator behaviour:
-```
+```php
+<?php
+
 echo 1 <=> 1; // 0
 echo 1 <=> 2; // -1
 echo 2 <=> 1; // 1
@@ -206,7 +220,9 @@ function can be used. This function works more like database style sorting - 'OR
 multiple columns statement in SQL query, rather than a sort function which excepts
 multiple arrays and sorts these arrays independently.
 
-```
+```php
+<?php
+
 $magazine[] = ['year' => 2015, 'month' => 1, 'issue' => 1];
 $magazine[] = ['year' => 2014, 'month' => 12, 'issue' => 4];
 $magazine[] = ['year' => 2015, 'month' => 2, 'issue' => 2];
@@ -233,7 +249,9 @@ and PHP doesn't provide a built-in function for this.
 
 The output of this script will differ on each call:
 
-```
+```php
+<?php
+
 $numbers = [1, 2, 3, 4, 5];
 shuffle($numbers);
 var_dump($numbers);

@@ -22,7 +22,9 @@ An array can be created using the [array()](http://php.net/manual/en/function.ar
 language construct or as of PHP 5.4 short array syntax `[]`. Array elements can
 be assigned to variable in multiple ways:
 
-```
+```php
+<?php
+
 $array1 = array();
 $array2 = [];       // as of PHP 5.4
 
@@ -87,7 +89,9 @@ of this value stored in an array as `$array['1']` can be also accessed as `$arra
 
 Typecasting and overwriting example:
 
-```
+```php
+<?php
+
 $array = [
     '0'     => 'apple',
     0       => 'banana',
@@ -107,7 +111,9 @@ are also limited by the maximum size of an integer.
 
 Let's consider this example:
 
-```
+```php
+<?php
+
 // PHP_INT_MAX = 2^63-1 for tested OS
 for ($index = -2; $index <= 2; ++$index) {
     $array[PHP_INT_MAX + $index] = $index;
@@ -116,7 +122,7 @@ for ($index = -2; $index <= 2; ++$index) {
 
 An array from the example above will look like this:
 
-```
+```bash
 Array
 (
     [9223372036854775805] => -2
@@ -142,7 +148,9 @@ insert associative element to it and PHP will still maintain elements of an enum
 
 Let's see an example:
 
-```
+```php
+<?php
+
 $array = [1, 2, 3];
 $array['bar'] = 'baz';
 $array[] = 4;
@@ -150,7 +158,7 @@ $array[] = 4;
 
 An array from the example above will look like this:
 
-```
+```bash
 Array
 (
     [0] => 1
@@ -169,7 +177,9 @@ PHP is maintaining the array order by its internal pointer.
 Because there is no correlation between the array pointer and element keys.
 We can insert elements with keys which are not sequential:
 
-```
+```php
+<?php
+
 $array[-10] = 'foo';
 $array[10] = 4;
 $array[8] = 8;
@@ -178,7 +188,7 @@ $array[] = 2000;
 
 An array from the example above will look like this:
 
-```
+```bash
 Array
 (
     [-10] => foo
@@ -203,7 +213,9 @@ To debug a script, it is often needed to output variable values. PHP provides
  information that includes its type and value; capable of outputting multiple
  variables at the same time
 
-```
+```php
+<?php
+
 $array = [
     'foo' => 'bar',
     100  => 'baz',
@@ -219,7 +231,7 @@ var_dump($array);
 
 The example above will output:
 
-```
+```bash
 Array
 (
     [foo] => bar
@@ -247,13 +259,15 @@ PHP also provides [var_export()](http://php.net/manual/en/function.var-export.ph
 a function which outputs or returns structured information about the given variable.
 The returned value is a valid PHP code and can be used for reconstruction.
 
-```
+```php
+<?php
+
 var_export(['Hello', 'World']);
 ```
 
 The example above will output:
 
-```
+```bash
 array (
   0 => 'Hello',
   1 => 'World',
@@ -267,7 +281,9 @@ Note missing trailing semicolon.
 
 Array elements can be accessed using the square bracket syntax: `array[key]`.
 
-```
+```php
+<?php
+
 $array['greeting'] = 'Hello';
 $array[] = 100;
 $array['beverage'] = [
@@ -280,7 +296,7 @@ print_r($array);
 
 This will output:
 
-```
+```bash
 Array
 (
     [greeting] => Hello
@@ -296,7 +312,9 @@ Array
 
 Now we can access array elements like this:
 
-```
+```php
+<?php
+
 var_dump(
     $array['greeting'],
     $array[0],
@@ -306,7 +324,7 @@ var_dump(
 
 Which will output:
 
-```
+```bash
 string(5) "Hello"
 int(100)
 string(4) "Wine"
@@ -324,7 +342,9 @@ The square bracket syntax is more commonly used.
 To remove a key-value pair or delete a whole array use the function
 [unset()](http://php.net/manual/en/function.unset.php):
 
-```
+```php
+<?php
+
 $fruit = ['banana', 'pear', 'blackberry', 'kiwifruit'];
 unset($fruit[0]);
 var_dump($fruit);
@@ -332,7 +352,7 @@ var_dump($fruit);
 
 The example above will output:
 
-```
+```bash
 array(3) {
   [1]=>
   string(4) "pear"
@@ -345,20 +365,24 @@ array(3) {
 
 Destroying the whole array:
 
-```
+```php
+<?php
+
 unset($fruit);
 var_dump($fruit);
 ```
 
 The example above will output:
 
-```
+```bash
 NULL
 ```
 
 An array can be also removed by overwriting with `null`:
 
-```
+```php
+<?php
+
 $vegetable = ['carrot', 'tomato', 'cabbage'];
 $vegetable = null;
 ```
@@ -371,7 +395,9 @@ This will have similar effect to the [unset()](http://php.net/manual/en/function
 Array variables can be determined using [is_array()](http://php.net/manual/en/function.is-array.php) function.
 This function finds whether the given variable is an array and returns a boolean value.
 
-```
+```php
+<?php
+
 $object = new stdClass;
 $array1 = array();
 $array2 = array(1);
@@ -386,7 +412,7 @@ var_dump(
 
 The above example will output:
 
-```
+```bash
 bool(false)
 bool(true)
 bool(true)
@@ -401,7 +427,9 @@ in the same way. There is no native function to do this, but there is an
 
 To determine whether an array is associative or not this function can be used:
 
-```
+```php
+<?php
+
 function is_assoc($array) {
   return (bool) count(array_filter(array_keys($array), 'is_string'));
 }
@@ -409,7 +437,9 @@ function is_assoc($array) {
 
 Example usage of the `is_assoc()` function:
 
-```
+```php
+<?php
+
 $associativeArray = is_assoc(['color' => 'blue', 'number' => 10]);
 $enumerativeArray = is_assoc(['red', 'black', 'yellow']);
 
@@ -419,7 +449,7 @@ var_dump($enumerativeArray);
 
 The above code example will output:
 
-```
+```bash
 bool(true)
 bool(false)
 ```
@@ -440,7 +470,9 @@ a new function similar to this one using a different filter callback function.
 
 Arrays can be compared using equality operator `==` or identity operator `===`:
 
-```
+```php
+<?php
+
 $array1 = [1, 2, 3];
 $array2 = [2 => 3, 1 => 2, 0 => 1];
 $array3 = ['a' => 1, 'b' => 2, 'c' => 3];
@@ -452,7 +484,7 @@ var_dump($array1 == $array3);
 
 This will output:
 
-```
+```bash
 bool(true)
 bool(false)
 bool(false)
@@ -466,7 +498,9 @@ Sometimes it's needed to compare only keys or values. This can be done using sam
 comparison methods as the above and one of the [array_keys()](http://php.net/manual/en/function.array-keys.php)
 or [array_values()](http://php.net/manual/en/function.array-values.php) function:
 
-```
+```php
+<?php
+
 $array1 = [1, 2, 3];
 $array2 = [2 => 3, 1 => 2, 0 => 1];
 $array3 = ['a' => 1, 'b' => 2, 'c' => 3];
@@ -481,7 +515,7 @@ var_dump(array_keys($array3) === array_keys($array4));
 
 The above example will output:
 
-```
+```bash
 bool(false)
 bool(false)
 bool(true)
@@ -499,7 +533,9 @@ is reindexing original array keys.
 Array elements are often assigned to variables. This can be done using one of accessing methods
 individually or using [list()](http://php.net/manual/en/function.list.php) construct shortcut:
 
-```
+```php
+<?php
+
 $array = [
     'London',
     '8,416,535',
@@ -513,7 +549,7 @@ var_dump($city, $population, $area, $country);
 
 This will output:
 
-```
+```bash
 string(6) "London"
 string(9) "8,416,535"
 string(8) "1,572.00"
@@ -525,7 +561,9 @@ starting with the right-most parameter and works only on numerical keys.
 
 Array elements can be omitted using multiple commas:
 
-```
+```php
+<?php
+
 list(,,$area1, $country1) = $array;
 list($city2,,,$country2) = $array;
 
@@ -536,7 +574,7 @@ var_dump($city2, $country2);
 
 The above example will output:
 
-```
+```bash
 string(8) "1,572.00"
 string(7) "England"
 ----------
@@ -549,7 +587,9 @@ As of PHP 5.4, it is possible to access array members directly when an array
 is returned by a function. This is known as array dereferencing. As of PHP 5.5,
 it is also possible to array dereference an array literal.
 
-```
+```php
+<?php
+
 function getCity() {
     return [
         'London',
@@ -569,7 +609,7 @@ var_dump(['a', 'b', 'c', 'd'][rand(0,3)]);
 ```
 The above example will output:
 
-```
+```bash
 string(6) "London"
 string(7) "England"
 ----------
