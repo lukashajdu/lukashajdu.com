@@ -193,7 +193,7 @@ The directory is the second major section of the filesystem, is shareable
 and contains read-only data. It's used for
 __files which are not needed for system booting__.
 
-```
+```bash
 /usr/
 ├── bin         # Most user commands; non-essential binaries and scripts
 ├── games       # Games and education binaries (optional)
@@ -216,7 +216,7 @@ up (e.g. logging data), it should not lock up the system. If the directory can't
 on a separate partition, it's preferable to have it on the `/usr` partition rather
 than the `/root` partition.
 
-```
+```bash
 /var
 ├── backups
 ├── cache               # Application cache data

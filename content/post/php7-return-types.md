@@ -19,7 +19,9 @@ return type hinting.
 When using [fluent interface](https://en.wikipedia.org/wiki/Fluent_interface) for a method chaining,
 you might be using class name in a return type hint similar to this:
 
-```
+```php
+<?php
+
 public function addEngine(EngineInterface $engine): CarFactory
 {
     $this->engine = $engine;
@@ -32,7 +34,9 @@ You might save some typing using `self` keyword, which refers to the class
 in which it is called, instead of a class name. The method declaration might
 look similar to this:
 
-``` 
+```php
+<?php
+
 public function addWheel(WheelInterface $wheel): self
 {
     $this->wheels[] = $wheel;
@@ -59,7 +63,9 @@ public function addEngine(EngineInterface $engine): self;
 
 If we try to make a car now:
 
-```
+```php
+<?php
+
 $carFactory = new \Lh\CarFactory();
 $carFactory
     ->addBody(new \Lh\SportBody())
@@ -68,7 +74,7 @@ $carFactory
 ```
 
 We will get a PHP Fatal error:
-```
+```bash
  PHP Fatal error:  Declaration of Lh\CarFactory::addEngine(Lh\EngineInterface $engine): Lh\CarFactory must be compatible with Lh\CarFactoryInterface::addEngine(Lh\EngineInterface $engine)
 ```
 
@@ -80,7 +86,9 @@ Are we going to get the same result if we use `self` in a trait?
 Let's create a door adding functionality to our `CarFactory` class and create
 a trait for this:
 
-``` 
+```php
+<?php
+
 trait DoorTrait
 {
     /** @var DoorInterface[] */
@@ -106,7 +114,9 @@ class CarFactory implements CarFactoryInterface
 
 We can update the car manufacturing process and run our script:
 
-```
+```php
+<?php
+
 $carFactory = new \Lh\CarFactory();
 $carFactory
     ->addBody(new \Lh\SportBody())
@@ -129,7 +139,9 @@ as our return type hint then?
 We might declare methods with a concrete return type hint or don't declare
 a type hint and override the declaration in a class which implements the interface:
 
-```
+```php
+<?php
+
 interface CarFactoryInterface
 {
     public function addEngine(EngineInterface $engine): CarFactory;
