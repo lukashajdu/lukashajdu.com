@@ -1,6 +1,6 @@
 ---
 title: "Linux Filesystem"
-date: "2019-09-02T14:41:00Z"
+date: "2019-10-02T14:41:00Z"
 tags: ["Filesystem"]
 categories: ["Linux 101"]
 ---
