@@ -73,6 +73,7 @@ based on casting rules.
 Array keys are unique values and can be either integers or strings. Data type other
 then this will be cast to these data types by following casting rules:
 
+{{< table "table table-striped table-borders" >}}
 | Data type    | Cast to        | Original value                | Cast value           | Notice                                                                                  |
 |--------------|----------------|-------------------------------|------------------------|-----------------------------------------------------------------------------------------|
 | [String](http://php.net/manual/en/language.types.string.php)       | [Integer](http://php.net/manual/en/language.types.integer.php)/[String](http://php.net/manual/en/language.types.string.php) | `"3"` / `"03"` | `3` / `"03"` | valid decimal integers will be cast to the integer type, other numbers will not be cast |
@@ -80,6 +81,7 @@ then this will be cast to these data types by following casting rules:
 | [Bool](http://php.net/manual/en/language.types.boolean.php)         | [Integer](http://php.net/manual/en/language.types.integer.php)        | `true`                    | `1`                 | the key `true` will actually be stored under `1` and the key `false` under `0`                  |
 | [Null](http://php.net/manual/en/language.types.null.php)         | [String](http://php.net/manual/en/language.types.string.php)         | `null`                          | `""`           | key `null` will actually be stored under `""`                                               |
 | [Array](http://php.net/manual/en/language.types.array.php)/[Object](http://php.net/manual/en/language.types.object.php) |                |                               |                        | illegal type; will produce `Warning: Illegal offset type ...` error                                                                            |
+{{</ table>}}
 
 Note that array keys are case-sensitive but type insensitive and elements with same keys
 are overwritten with a later declaration. Arrays are type insensitive because they

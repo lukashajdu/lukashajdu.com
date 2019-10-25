@@ -340,6 +340,49 @@
         font-size: 12px;
         padding: 20px 0;
         text-align: center;
+        margin-top: 20px;
+    }
+
+    .table {
+        font-size: 14px;
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .table th {
+        font-weight: 700;
+        border-bottom: 1px solid black;
+    }
+
+    .table th, .table  td {
+        text-align: left;
+        padding: 10px;
+    }
+
+    .table-borders td {
+        border-left: 1px solid black;
+    }
+
+    .table-borders td:nth-child(1) {
+        border-left: none;
+    }
+
+    .table-borders th {
+        border-left: 1px solid black;
+    }
+
+    .table-borders th:nth-child(1) {
+        border-left: none;
+    }
+
+    .table-striped tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .table td:nth-child(2), .table th:nth-child(2) {
+        border-left: 1px solid black;
     }
 
     @media (max-width: 750px) {
