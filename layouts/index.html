@@ -2,7 +2,7 @@
 
 <section id=content>
     <ul class=posts_listing>
-        {{ range where .Paginator.Pages.ByPublishDate "Section" "post" }}
+        {{ range (where .Paginator.Pages.ByPublishDate "Section" "post").Reverse }}
         <li>
             <div id=date>
                 <time>{{ .Date.Format (.Site.Params.dateform) }}</time>
