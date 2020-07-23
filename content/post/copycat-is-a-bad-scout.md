@@ -11,6 +11,7 @@ and even typo in a log message, commented code and todo comments. Just the class
 Obvious code duplication.<!--more-->
 
 Uncle Bob talks about cleaning up code in [The Boy Scout Rule] chapter:
+
 > "I don't think this rule is too much to ask. You don't have to make every module perfect 
 before you check it in. You simply have to make it a little bit better than when you checked it out. 
 Of course, this means that any code you add to a module must be clean."
