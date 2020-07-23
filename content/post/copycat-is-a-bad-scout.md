@@ -28,7 +28,8 @@ not the lack of tools.
 
 # What would a good scout do?
 
-Good scout would: 
+Good scout would:
+
  - use class inheritance as both classes extend the same parent class to avoid extensive duplication
  - remove dead code
  - remove `@todo` comments as they are not valid for last two years
