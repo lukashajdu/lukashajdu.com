@@ -263,6 +263,15 @@
         margin-left: 3px;
     }
 
+    #content-footer:before {
+        content: ""; /* This is necessary for the pseudo element to work. */
+        display: block; /* This will put the pseudo element on its own line. */
+        width: 15%; /* Change this to whatever width you want. */
+        padding-top: 10px; /* This creates some space between the element and the border. */
+        margin: 20px 0;
+        border-bottom: 1px solid black; /* This creates the border. Replace black with whatever color you want. */
+    }
+
     .highlight {
         margin: 10px 0;
     }
@@ -308,8 +317,11 @@
     }
 
     #links {
-        margin: 50px 0 0 0;
+        margin: 25px 0 25px 0;
         display: block;
+        padding: 20px 0;
+        border-bottom: 2px solid #e7e9ee;
+        border-top: 2px solid #e7e9ee;
     }
 
     #links :nth-child(2) {
@@ -402,10 +414,14 @@
             padding: 0 15px;
         }
 
-        #content {
+        #content, #links {
             margin-top: 0;
             padding-top: 50px;
             font-size: 14px;
+        }
+
+        #links {
+            padding-top: 20px;
         }
 
         #content h1 {
@@ -436,7 +452,7 @@
             padding: 0 10px;
         }
 
-        #content {
+        #content, #links {
             margin-top: 0;
             padding-top: 20px;
             font-size: 12px;
