@@ -1,7 +1,7 @@
 ---
 title: "S3 upload object tagging in AWS Lambda"
 date: "2020-01-14T12:01:00Z"
-tags: ["AWS SAM", "Lambda"]
+tags: ["aws", "lambda"]
 categories: ["Development"]
 ---
 
