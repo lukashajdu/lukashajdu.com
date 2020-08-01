@@ -41,9 +41,9 @@ function fibNaive($n)
 ```
 If you run `fibNaive(30)`, you will see that this function already runs in a noticeable time.
 Let's examine why is it so slow. The image below shows recursive calls for `fibNaive(5)`
-and the same coloured circles represent duplicate computations. 
+and the same coloured circles represent duplicate computations.
 
-![fibNaive(5)](/img/increasing-speed-with-a-well-chosen-algorithm/fib5.jpeg#75percent "fibNaive(5)")
+![fibNaive(5)](/img/increasing-speed-with-a-well-chosen-algorithm/fib5.jpeg#75percent)
 
 As you can see, even for such a small Fibonacci number, the duplication is very high, and it grows exponentially.
 Running time for `fibNaive(n)` is proportional to 2^(0.694n) ≈ (1.6)^n, so it takes **1.6x** longer

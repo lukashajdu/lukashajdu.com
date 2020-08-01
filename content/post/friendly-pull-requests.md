@@ -1,7 +1,7 @@
 ---
 title: "Friendly pull requests"
 date: "2020-07-16T17:01:00Z"
-tags: ["Code review"]
+tags: ["code reviews"]
 categories: ["Development"]
 ---
 
