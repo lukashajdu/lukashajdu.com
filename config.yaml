@@ -3,7 +3,7 @@ baseurl: "https://lukashajdu.com/"
 publishDir: web
 paginate: 20
 disqusShortname: "lukashajdu-com"
-googleAnalytics: "UA-54969806-1"
+googleAnalytics: "G-P3FBCQN2TP"
 
 params:
   sitename: "blog@lukash:/en"
