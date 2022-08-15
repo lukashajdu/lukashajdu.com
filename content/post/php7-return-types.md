@@ -79,7 +79,7 @@ We will get a PHP Fatal error:
 ```
 
 This is because the `self` keyword refers to the `CarFactoryInterface` instead
-of the `CarFactoryInterface`. 
+of the `CarFactory`. 
 
 Are we going to get the same result if we use `self` in a trait?
 
