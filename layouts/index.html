@@ -1,23 +1,21 @@
-{{ partial "header.html" . }}
+{{ define "container" }}
+{{ $paginator := .Paginate .Site.RegularPages }}
+{{ range $paginator.Pages }}
+   {{ .Render "summary" }}
+{{ end }}
 
-<section id=content>
-    <ul class=posts_listing>
-        {{ range (where .Paginator.Pages.ByPublishDate "Section" "post").Reverse }}
-        <li>
-            <div id=date>
-                <time>{{ .Date.Format (.Site.Params.dateform) }}</time>
-            </div>
-            <h2>
-                <a href="{{ .Permalink }}">{{ .Title }}</a>
-            </h2>
-            <div>
-                <a href="{{ .Permalink }}">{{ .Summary }}</a>
-            </div>
-        </li>
-        {{ end }}
-    </ul>
-
-    {{ template "_internal/pagination.html" . }}
-</section>
-
-{{ partial "footer.html" . }}
+{{ if or ($paginator.HasPrev) ($paginator.HasNext) }}
+<ul class="pager">
+  {{ if $paginator.HasPrev }}
+  <li class="previous">
+      <a href="{{ .Paginator.Prev.URL }}">&larr; Newer Posts</a>
+  </li>
+  {{ end }}
+  {{ if $paginator.HasNext }}
+  <li class="next">
+      <a href="{{ .Paginator.Next.URL }}">Older Posts &rarr;</a>
+  </li>
+  {{ end }}
+</ul>
+{{ end }}
+{{ end }}

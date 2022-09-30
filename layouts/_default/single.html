@@ -1,35 +1,72 @@
-{{ partial "header.html" . }}
+{{ define "main" }}
 
-<section id="content" class="single_post">
-    <div id="date">
-        <time>{{ .Date.Format (.Site.Params.dateform) }}</time>
-    </div>
-    <h1>
-        {{ if .Params.heading }}
-            {{ .Params.heading }}
-        {{ else }}
-            {{ .Title }}
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+
+      <!-- Post Container -->
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              post-container">
+
+        <!-- Affiliate disclaimer -->
+        {{ $affiliate := .Param "affiliate" }}
+        {{ if $affiliate }}
+        <div class="affiliate">
+          <span>Please note that this page might contain affiliate links.</span>
+        </div>
         {{ end }}
-    </h1>
 
-    <div class="entry-content">
         {{ .Content }}
+
+        <hr style="visibility: hidden;" />
+        <ul class="pager">
+          {{ with .Prev }}
+          <li class="previous">
+            <a href="{{ .RelPermalink }}" data-toggle="tooltip" data-placement="top" title="{{ .Title }}">
+              Previous<br>
+              <span>{{ .Title }}</span>
+            </a>
+          </li>
+          {{ end }}
+          {{ with .Next }}
+          <li class="next">
+            <a href="{{ .RelPermalink }}" data-toggle="tooltip" data-placement="top" title="{{ .Title }}">
+              Next<br>
+              <span>{{ .Title }}</span>
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+        <hr style="visibility: hidden;" />
+
+        <!-- comments -->
+        {{ partial "comments.html" . }}
+
+      </div>
+
+      <!-- Side Catalog Container -->
+      {{ $toc := .Scratch.Get "toc" }}
+      {{ if $toc }}
+      <div class="
+              col-lg-2 col-lg-offset-0
+              visible-lg-block
+              sidebar-container
+              catalog-container">
+        <div class="side-catalog">
+          <hr class="hidden-sm hidden-xs">
+          <h5>
+            <a class="catalog-toggle" href="#">CATALOG</a>
+          </h5>
+          <ul class="catalog-body"></ul>
+        </div>
+      </div>
+      {{ end }}
+      <!-- Sidebar Container -->
     </div>
+  </div>
+</article>
 
-    <div id="links">
-        {{ if .PrevInSection }}
-        <a class="basic-alignment" href="{{.PrevInSection.Permalink}}">&laquo;
-            {{.PrevInSection.Title}}
-        </a>
-        {{ end }}
-
-        {{ if .NextInSection }}
-        <a class="basic-alignment {{ if not .PrevInSection }}right{{ end }}" href="{{.NextInSection.Permalink}}">
-            {{.NextInSection.Title}} &raquo;
-        </a>
-        {{ end }}
-    </div>
-</section>
-
-{{ template "_internal/disqus.html" . }}
-{{ partial "footer.html" . }}
+{{ end }}

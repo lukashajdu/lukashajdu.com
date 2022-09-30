@@ -3,6 +3,7 @@ title: "Mastering PHP arrays: Array basics"
 date: "2019-03-08T09:01:00Z"
 tags: ["php", "array"]
 categories: ["Development"]
+toc: true
 ---
 
 An [array](http://php.net/manual/en/language.types.array.php) is one of the most powerful

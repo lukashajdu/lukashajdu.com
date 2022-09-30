@@ -3,6 +3,7 @@ title: "Linux Filesystem"
 date: "2019-10-02T14:41:00Z"
 tags: ["Filesystem"]
 categories: ["Linux 101"]
+toc: true
 ---
 
 To maintain Linux filesystem it's important to know where the files are located.

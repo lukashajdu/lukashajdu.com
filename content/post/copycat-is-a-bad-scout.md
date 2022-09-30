@@ -20,13 +20,13 @@ The author of the duplicated code clearly didn't make any effort to leave the ex
 a cleaner state than he found it. He didn't even make an effort to clean up the code he copied. 
 This approach is precisely the way to end up with a legacy code no one wants to work with.
 
-![Copycat](/img/copycat.png "Copycat")
+![Copycat](/img/copycat.png#50percent "Copycat")
 
 And being a good scout is so easy nowadays. We have a spectrum of possibilities at our disposal
 we can use in no time. I think the reason for not leaving the code in a better state is laziness, 
 not the lack of tools.
 
-# What would a good scout do?
+## What would a good scout do?
 
 Good scout would:
 

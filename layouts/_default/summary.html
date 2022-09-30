@@ -1,0 +1,13 @@
+<div class="post-preview">
+    <p class="post-meta">{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
+    <a href="{{ .RelPermalink }}">
+        <h2 class="post-title">{{ .Title }}</h2>
+        <div class="post-content-preview">
+            {{ if isset .Params "description" }} {{ index .Params "description" }}
+            {{ else }}
+            {{ .Summary | plainify | truncate 180 }}
+            {{ end }}
+        </div>
+    </a>
+</div>
+<hr>
