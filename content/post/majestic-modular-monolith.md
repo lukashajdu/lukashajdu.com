@@ -3,6 +3,7 @@ title: "Majestic Modular Monoliths"
 date: "2020-05-05T12:01:00Z"
 tags: ["Notes", "Monolith", "Refactoring"]
 categories: ["Development"]
+toc: true
 ---
 
 The microservice architecture is trendy over the last few years. However, there are more
@@ -14,28 +15,7 @@ when it comes to refactoring with rational reasons why microservices are not alw
 
 These are my notes from the presentation.
 
-{{< toc >}}
-# Table of contents
-<!-- TOC -->
-- [Reducing cognitive load](#reducing-cognitive-load)
-- [Architecture styles](#architecture-styles)
-    - [What can they offer?](#what-can-they-offer)
-    - [Modular monolith](#modular-monolith)
-    - [Layered architecture](#layered-architecture)
-- [Domain-Driven Design (DDD)](#domain-driven-design-ddd)
-    - [Acyclic dependencies](#acyclic-dependencies)
-    - [Module boundaries and structure](#module-boundaries-and-structure)
-- [Code isolation](#code-isolation)
-- [Relational databases](#relational-databases)
-    - [Modular application database structure](#modular-application-database-structure)
-    - [Data isolation](#data-isolation)
-- [Scaling](#scaling)
-    - [Scaling asymmetrically](#scaling-asymmetrically)
-- [Conclusions](#conclusions)
-<!-- /TOC -->
-{{</ toc >}}
-
-# Reducing cognitive load
+## Reducing cognitive load
 
 Code starts in our head and ends up running on a physical device. The code size is not
 a problem for machine or compiler because the machine doesn’t have issues with processing more classes.
@@ -45,59 +25,59 @@ We are reading code and trying to understand it 95% of our time. Because of this
 we should optimise our code for reading. The optimisation can be done in multiple ways such as
 adding structure to our code, raising the abstraction level or reducing the cognitive load (better understanding).
 
-![Abstraction layers](/img/majestic-modular-monolith/abstraction-layers.svg "Abstraction layers")
+![Abstraction layers](/img/majestic-modular-monolith/abstraction-layers.svg#30percent "Abstraction layers")
 
 Some of the tools for reducing cognitive load and increasing the abstraction level are methods, classes,
 packages, modules and applications.
 
 Architecture is an interaction and relationship between these.
 
-# Architecture styles
+## Architecture styles
 
 There are two popular architecture styles for the last few years —monolith with
 a very negative view and microservices with a very positive view, mainly because of the tech giants.
 
-![Majestic monolith](/img/majestic-modular-monolith/monolith.png "Majestic monolith")
+![Majestic monolith](/img/majestic-modular-monolith/monolith.png#75percent "Majestic monolith")
 
 However, we should rectify and use more objective terms to name these architectural styles.
 We should think about the styles in terms of deployment. A monolith would be an integrated system
 and microservices a distributed system.
 
-![Integrated vs distributed system](/img/majestic-modular-monolith/integrated-distributed-system.svg "Integrated vs distributed system")
+![Integrated vs distributed system](/img/majestic-modular-monolith/integrated-distributed-system.svg#75percent "Integrated vs distributed system")
 
-## What can they offer?
+### What can they offer?
 
 We can’t treat a monolith and microservices as black & white because there are advantages
 and disadvantages in both of them.
 
 {{< table "table table-striped" >}}
-| Monolith | Microservice |
+| Monolith                          | Microservice                                                   |
 |-----------------------------------|----------------------------------------------------------------|
-| One artefact | Many individual services |
-| Entanglement risk | Focus on clear small units |
-| Simple method calls | Unreliable network calls |
+| One artefact                      | Many individual services                                       |
+| Entanglement risk                 | Focus on clear small units                                     |
+| Simple method calls               | Unreliable network calls                                       |
 | All parts always up and available | Service discovery + internal load balancing + circuit breakers |
-| Easy interface refactoring | Difficult to refactor |
-| Application scales as a unit | Services scale individually |
-| One database | Polyglot persistence |
-| Transactions | Eventual consistency |
-| One platform | Platform choice |
-| Forced dependency convergence | Works with compatible versions |
-| Limited team parallelisation | Easy team parallelisation |
+| Easy interface refactoring        | Difficult to refactor                                          |
+| Application scales as a unit      | Services scale individually                                    |
+| One database                      | Polyglot persistence                                           |
+| Transactions                      | Eventual consistency                                           |
+| One platform                      | Platform choice                                                |
+| Forced dependency convergence     | Works with compatible versions                                 |
+| Limited team parallelisation      | Easy team parallelisation                                      |
 {{</ table >}}
 
 Monoliths can be useful at the lower end in small organisations with simple apps. On the other side,
 microservices are essential at the higher end in large organisations with a strong division of labour
 and complex applications.
 
-## Modular monolith
+### Modular monolith
 
 The modular monolith combines the advantages of both architectural styles. It provides simplicity in terms
 of deployment and physical architecture of the monolith, and logical architecture of microservices.
 
 ![Modular monolith](/img/majestic-modular-monolith/modular-monolith-in-between.svg "Modular monolith")
 
-## Layered architecture
+### Layered architecture
 
 Monoliths often have a bad reputation and are criticised for their structure, but this is not actually true.
 Most monoliths have some kind of structure.
@@ -111,18 +91,18 @@ is pervasive and is very common. It is part of many scaffolding tools and framew
 Our software might contain different large functional areas such as customer, invoice and payment.
 In theory, they might look like this:
 
-![Domains structure in theory](/img/majestic-modular-monolith/theoretical-domain-structure.svg "Domains structure in theory")
+![Domains structure in theory](/img/majestic-modular-monolith/theoretical-domain-structure.svg#75percent "Domains structure in theory")
 
 However, things and requirements we start to implement become less clear over time. The structure starts
 being more complicated as the application grows. We begin to use a little bit of this
 in one service with a little bit of that in another service, and we end up with broken boundaries
 between our functional areas.
 
-![Domains structure in reality](/img/majestic-modular-monolith/real-domain-structure.svg "Domains structure in reality")
+![Domains structure in reality](/img/majestic-modular-monolith/real-domain-structure.svg#75percent "Domains structure in reality")
 
 To tackle this kind of problems we can use Domain-Driven Design.
 
-# Domain-Driven Design (DDD)
+## Domain-Driven Design (DDD)
 
 DDD was introduced in 2004 by Eric Evans in his book Domain-Driven Design, and it will help us dividing
 our application into logical pieces, modules. DDD brings us ideas like aggregates and aggregate roots.
@@ -130,18 +110,18 @@ The aggregate brings cohesive functionality in our application that fits togethe
 a low coupling to the outside world. The aggregate root is an entity which serves as
 an entry point to the aggregate.
 
-![Domain design](/img/majestic-modular-monolith/domain-design.svg "Domain design")
+![Domain design](/img/majestic-modular-monolith/domain-design.svg#75percent "Domain design")
 
-## Acyclic dependencies
+### Acyclic dependencies
 
 When it comes to modules, at some point, we will need to have some interaction between them.
 This interaction brings us dependencies. We should be aware of which direction data between modules flows.
 We want to have dependencies with no cycles between modules which will form an acyclic graph. In this graph,
 an unstable concept depends on a stable concept.
 
-![Acyclic dependencies](/img/majestic-modular-monolith/acyclic-dependencies.svg "Acyclic dependencies")
+![Acyclic dependencies](/img/majestic-modular-monolith/acyclic-dependencies.svg#75percent "Acyclic dependencies")
 
-## Module boundaries and structure
+### Module boundaries and structure
 
 When it comes to module boundaries within our application, we should look for highly cohesive blocks
 of functionality. We aim for low coupling to the other modules. Highly cohesive blocks with low coupling
@@ -153,9 +133,9 @@ Interaction between modules should only depend on the API of other modules, not 
 In this situation, one API can depend on another API or implementation can depend on another API,
 but implementations can’t directly depend on each other.
 
-![Module boundaries](/img/majestic-modular-monolith/module-boundaries.svg "Module boundaries")
+![Module boundaries](/img/majestic-modular-monolith/module-boundaries.svg#75percent "Module boundaries")
 
-# Code isolation
+## Code isolation
 
 We have a spectrum of possibilities at our disposal to isolate code in reality. These are possibilities in Java:
 
@@ -173,7 +153,7 @@ and then we integrate it at the end like a library in your app.
 **External service**: we can pull the functionality out of the main application and move the code
 into separate services that we can deploy separately.
 
-![Code isolation](/img/majestic-modular-monolith/monolith-microservice-options.svg "Code isolation")
+![Code isolation](/img/majestic-modular-monolith/monolith-microservice-options.svg#75percent "Code isolation")
 
 The spectrum of choices for the integrated system or monolith is broad as you can see in the image above.
 Once we’ve exhausted all the options for monoliths, we move to the microservice side. The idea is always
@@ -187,7 +167,7 @@ rebuild the project, and it’s easy to see the forest through the trees by look
 One of the big problems that this doesn’t solve is transitive dependencies to conflicting versions
 of the same library (JAR Hell).
 
-![JAR Hell](/img/majestic-modular-monolith/jar-hell.svg "JAR Hell")
+![JAR Hell](/img/majestic-modular-monolith/jar-hell.svg#75percent "JAR Hell")
 
 <p class="no-bottom-margin">
 There are several solutions to tackle this problem:
@@ -201,19 +181,19 @@ There are several solutions to tackle this problem:
 - final possibility if none of the previous options work is to copy and paste all the code
   of the conflicting library under our namespace
 
-# Relational databases
+## Relational databases
 
 Code usually isn’t useful without persisting data somewhere. Relational databases are still dominant
 on the market these days. They provide us with valuable features out of the box, such as referential
 integrity and atomic transactions.
 
-## Modular application database structure 
+### Modular application database structure 
 
 With our modular application, we want to follow certain rules.
 
 **Database object per module**: we need to ensure that each module only accesses its tables or database objects.
 
-![Modular monolith database mapping](/img/majestic-modular-monolith/modular-monolith-db-mapping.svg "Modular monolith database mapping")
+![Modular monolith database mapping](/img/majestic-modular-monolith/modular-monolith-db-mapping.svg#30percent "Modular monolith database mapping")
 
 **No shared tables between modules**: if we take a closer look at the database on the image above we can see
 that for every module that we have on the top, we have an equivalent set of database objects
@@ -233,12 +213,12 @@ Until we need to do that we can still reap all the benefits.
 
 If we follow the rules above, our architecture will look more like this:
 
-![Modular monolith database](/img/majestic-modular-monolith/modular-monolith-db.svg "Modular monolith database")
+![Modular monolith database](/img/majestic-modular-monolith/modular-monolith-db.svg#75percent "Modular monolith database")
 
 We have our modules represented by APIs, and their private implementations are accessing their closed subset
 of the data in the database.
 
-## Data isolation
+### Data isolation
 
 In terms of data isolation between modules, we have again, a spectrum of choices.
 
@@ -257,21 +237,21 @@ to manage in-house on the operations side.
 **Other persistence**: if our current technology to underpin the persistence of our modules isn’t appropriate
 for what we need, and we need to move to a vastly different type of persistence, the last step is to move out.
 
-![Database isolation](/img/majestic-modular-monolith/database-isolation-options.svg "Database isolation")
+![Database isolation](/img/majestic-modular-monolith/database-isolation-options.svg#75percent "Database isolation")
 
 If we are using relational data at some point, we will need to manage the structure of our schemas to be able
 to evolve it over time with our application. It’s highly recommended to use a tool for that instead
 of doing it manually.
 
-# Scaling
+## Scaling
 
 Scaling is a big topic when it comes to microservices. The spectrum of choices we have before we exhaust
 the possibility of being able to scale up is vast. Mainly because we are not limited to one instance,
 but if we need to scale up our modular monolith beyond the size of that, we can also have multiple of those instances.
 
-![EC2 scaling](/img/majestic-modular-monolith/scaling.svg "EC2 scaling")
+![EC2 scaling](/img/majestic-modular-monolith/scaling.svg#75percent "EC2 scaling")
 
-## Scaling asymmetrically
+### Scaling asymmetrically
 
 Sometimes we don’t want to scale individual modules at the same rate. We might have certain parts
 of our application that may demand more capacity than others. There is again a spectrum of possibilities
@@ -294,9 +274,9 @@ and the message ends back in the queue.
 **Dedicated queue**: if we reach capacity levels of your database, we can look at moving to a dedicated
 queuing system where we can deal with a very high capacity (if that’s a concern).
 
-![Database scaling](/img/majestic-modular-monolith/database-scaling.svg "Database scaling")
+![Database scaling](/img/majestic-modular-monolith/database-scaling.svg#75percent "Database scaling")
 
-# Conclusions
+## Conclusions
 
 Breaking up a monolith into microservices is a hot topic over the last few years. However, it's often not necessary. 
 In many cases, it is only a good excuse to move on something more trendy. Microservices can bring us many benefits, 

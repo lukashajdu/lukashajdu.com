@@ -1,0 +1,7 @@
+#!/bin/sh
+
+rm -rf web/
+hugo --gc --minify --destination web
+rclone sync web/ lukashajdu.com:/web
+
+exit 0

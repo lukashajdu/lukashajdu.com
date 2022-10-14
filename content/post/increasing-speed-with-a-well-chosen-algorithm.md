@@ -3,6 +3,7 @@ title: "Increasing speed with a well-chosen algorithm"
 date: "2020-07-31T10:31:00Z"
 tags: ["algorithm", "optimisation"]
 categories: ["Development"]
+toc: true
 ---
 
 How can a simple buffer increase an algorithm performance?
@@ -43,11 +44,11 @@ If you run `fibNaive(30)`, you will see that this function already runs in a not
 Let's examine why is it so slow. The image below shows recursive calls for `fibNaive(5)`
 and the same coloured circles represent duplicate computations.
 
-![fibNaive(5)](/img/increasing-speed-with-a-well-chosen-algorithm/fib5.jpeg#75percent)
+![fibNaive(5)](/img/increasing-speed-with-a-well-chosen-algorithm/fib5.jpeg#50percent)
 
 As you can see, even for such a small Fibonacci number, the duplication is very high, and it grows exponentially.
 Running time for `fibNaive(n)` is proportional to 2^(0.694n) ≈ (1.6)^n, so it takes **1.6x** longer
-to compute F(n+1) than F(n) ([Algorithms06]). How can we improve the exponential running time of our function?
+to compute F(n+1) than F(n)[^1]. How can we improve the exponential running time of our function?
 
 # A linear algorithm
 
@@ -93,6 +94,4 @@ It's possible to decrease it to logarithmic time with the help of matrices, but 
 Next time you write those nested loops, and your code runs very slow, try to think about running times.
 There might be a simple solution.
 
-# References
-
-- [Algorithms06] Algorithms. Sanjoy Dasgupta. McGraw-Hill Higher Education, 2006. ISBN: 9780077388492
+[^1]: Algorithms. Sanjoy Dasgupta. McGraw-Hill Higher Education, 2006. ISBN: 9780077388492

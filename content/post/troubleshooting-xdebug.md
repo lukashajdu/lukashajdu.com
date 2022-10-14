@@ -3,6 +3,7 @@ title: "Troubleshooting Xdebug in a Docker container"
 date: "2020-04-29T15:01:00Z"
 tags: ["Xdebug", "Docker", "Phpstorm"]
 categories: ["Development"]
+toc: true
 ---
 
 Xdebug is an amazing PHP extension which provides debugging and profiling capabilities. Every PHP developer

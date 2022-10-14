@@ -18,7 +18,7 @@ months of postponing, new functionality integration and the character of the cha
 it not possible to merge it in smaller parts (it's always good to have excuses). 
 I could imagine the thoughts of my colleague (🤦😫😭). I wasn't exactly proud of my PR, but it happened. 
 
-![Pull request](/img/pull-request.png "Pull request")
+![Pull request](/img/pull-request.png#75percent "Pull request")
 
 If this were a one-time thing, it would not be such a great deal, but we have this kind of PRs frequently. 
 No wonder no one wants to review them. Here is the problem with this kind of PRs. 
@@ -26,7 +26,7 @@ Even if the PR is reviewed, a chance that some defects are overlooked is very hi
 Overlooked defects can cause problems in the future, and it's harder and much more expensive 
 to fix these problems once they are in production. 
 
-# Be nice to your colleagues
+## Be nice to your colleagues
 
 We should understand why code reviews are so important at this point. 
 There are some things we can do to make our code easier to review and decrease the chance of overlooking defects.
@@ -45,7 +45,7 @@ Here is a list of things you should consider before you create a pull request:
 
 Your pull request will be certainly more pleasant to review.
 
-## Large code changes
+### Large code changes
 
 What if you are working on a much bigger functionality which could break the existing system
 if not delivered as a whole unit? If you can't deliver the functionality incrementally,

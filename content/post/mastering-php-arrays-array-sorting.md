@@ -3,6 +3,7 @@ title: "Mastering PHP arrays: Array sorting"
 date: "2019-03-04T13:15:00Z"
 tags: ["php", "array"]
 categories: ["Development"]
+toc: true
 ---
 
 Sorting is an operation that arranges data in a specified way. PHP has several 
@@ -86,7 +87,7 @@ $array = [
 
 Output of the `sort($array)` function for various sort flags will be:
 
-![Different sort flags for sort function](/img/mastering-php-arrays/various-sort-flags-output.jpg "Output for various sort flags")
+![Different sort flags for sort function](/img/mastering-php-arrays/various-sort-flags-output.jpg#75percent "Output for various sort flags")
 
 As you can see sorted array differs for each sort flag. Comparison of sorted keys and values
 is case sensitive by default. For case-insensitive comparison, **SORT_FLAG_CASE** combination
@@ -106,7 +107,7 @@ var_dump($oranges);
 
 This will output:
 
-![Sorting with flag case](/img/mastering-php-arrays/sorting-with-flag-case.jpg "Sorting with flag case")
+![Sorting with flag case](/img/mastering-php-arrays/sorting-with-flag-case.jpg#75percent "Sorting with flag case")
 
 For natural ordering the [natsort](http://php.net/manual/en/function.natsort.php) function
 and for the case-insensitive version the [natcasesort](http://php.net/manual/en/function.natcasesort.php)
@@ -157,7 +158,7 @@ var_dump($array);
 
 The output of this script will be:
 
-![User sorting - SORT_STRING interpolation](/img/mastering-php-arrays/usort-strings.jpg "User sorting - SORT_STRING interpolation")
+![User sorting - SORT_STRING interpolation](/img/mastering-php-arrays/usort-strings.jpg#50percent "User sorting - SORT_STRING interpolation")
 
 It is possible to create a comparison function like this, because [strcmp()](http://php.net/manual/en/function.strcmp.php)
 function returns values as an [usort()](http://php.net/manual/en/function.usort.php)
@@ -189,7 +190,7 @@ var_dump($array);
 
 This outputs the following:
 
-![User sorting - Occurrence of  letter o](/img/mastering-php-arrays/usort-o-occurrence.jpg "User sorting - Occurrence of  letter o")
+![User sorting - Occurrence of  letter o](/img/mastering-php-arrays/usort-o-occurrence.jpg#50percent "User sorting - Occurrence of  letter o")
 
 As you can see the [usort](http://php.net/manual/en/function.usort.php) function gives you
 an option to create complex sorting functions. Note that this function doesn't maintain
@@ -236,7 +237,7 @@ var_dump($magazine);
 
 The output of this script will be:
 
-![Multi-array sorting](/img/mastering-php-arrays/multi-array-sorting.jpg "Multi-array sorting")
+![Multi-array sorting](/img/mastering-php-arrays/multi-array-sorting.jpg#75percent "Multi-array sorting")
 
 As you can see from outputted data, the array was sorted by year at first place, then by month and an issue number at last place.
 

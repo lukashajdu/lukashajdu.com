@@ -1,17 +1,65 @@
-</div>
-{{ template "_internal/google_analytics.html" . }}
-
-<div id="copyright">
-    <span>
-        ©2022 Lukas Hajdu | Except where otherwise noted, content on this site is licensed under
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <!-- SNS Link -->
+        {{ partial "sns-links.html" (dict "center" true "social" .Site.Params.social ) }}
+        <p class="copyright text-muted">
+          Copyright &copy; {{ .Site.Params.author }} {{ now.Format "2006" }} |
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>
+        <br />
         <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
-            CC BY-NC 4.0
+          <img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" />
         </a>
-    </span>
-    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
-        <img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" />
-    </a>
-</div>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
 
-</body>
-</html>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+<!-- Custom Theme JavaScript -->
+{{ $mainJs := resources.Get "js/blog.js" | minify | fingerprint }}
+<script src="{{ $mainJs.RelPermalink }}"></script>
+
+<!-- Simple Jekyll Search -->
+<script src="/js/simple-jekyll-search.min.js"></script>
+
+{{ $searchJs := resources.Get "js/search.js" | minify | fingerprint }}
+<script src="{{ $searchJs.RelPermalink }}"></script>
+
+{{ $toc := .Scratch.Get "toc" }}
+{{ if $toc }}
+
+{{ $tocJs := resources.Get "js/table-of-content.js" | minify | fingerprint }}
+<script src="{{ $tocJs.RelPermalink }}"></script>
+
+{{ $navJs := resources.Get "js/jquery.nav.js" | minify | fingerprint }}
+<script type="text/javascript" src='{{ $navJs.RelPermalink }}'></script>
+<script>
+   $(document).ready( function () {
+    $('.catalog-body').onePageNav({
+      currentClass: "active",
+      changeHash: !1,
+      easing: "swing",
+      filter: "",
+      scrollSpeed: 700,
+      scrollOffset: 0,
+      scrollThreshold: .2,
+      begin: null,
+      end: null,
+      scrollChange: null,
+      padding: 80
+    });
+  });
+</script>
+
+{{ end }}
+
+
+{{ if not .Site.IsServer }}
+{{ template "_internal/google_analytics.html" . }}
+{{ end }}

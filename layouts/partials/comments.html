@@ -1,0 +1,7 @@
+{{ if (ne .Params.comment false) -}}
+
+{{ if .Site.DisqusShortname }}
+{{ template "_internal/disqus.html" . }}
+{{ end }}
+
+{{ end }}

@@ -14,7 +14,6 @@ This is an example output with a short description:
 
 ![/proc directory](/img/linux-101/labs/03-uname.svg)
 
-{{< table "table table-striped" >}}
 | Parameter             | Option | Description                                                 |
 |-----------------------|--------|-------------------------------------------------------------|
 | Kernel name           | -s     | Displays kernel name, which is Linux on a Linux system      |
@@ -25,4 +24,3 @@ This is an example output with a short description:
 | Processor type        | -p     | Information about the CPU; returns unknown in many systems  |
 | Hardware platform     | -i     | Hardware platform information; usually returns unknown      |
 | Operating system      | -o     | OS name; GNU/Linux for a Linux system                       |
-{{</ table >}}

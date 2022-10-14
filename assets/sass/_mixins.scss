@@ -1,0 +1,28 @@
+// Mixins
+
+@mixin transition-all() {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+@mixin background-cover() {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+@mixin monospace() {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+@mixin sans-serif() {
+  font-family:
+    -apple-system,            // OSX ^10.11 & iOS ^9 San Francisco for Safari
+    BlinkMacSystemFont,       // OSX ^10.11 & iOS ^9 San Francisco for Blink
+    "Helvetica Neue",         // OSX
+    "Arial",                  // Win "Helvetica"
+    sans-serif;               // System Fallback
+  line-height: 1.7;
+}
